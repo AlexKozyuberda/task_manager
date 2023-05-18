@@ -1,5 +1,5 @@
 // Core
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -23,8 +23,9 @@ import {
 
 export const TaskForm: FC = () => {
   const dispatch = useDispatch();
+  const [labelPosition, setLabelPosition] = useState(false);
 
-  const { formState, register, handleSubmit, reset } = useForm({
+  const { formState, register, handleSubmit, reset, watch } = useForm({
     mode: 'onTouched',
     resolver: yupResolver(taskSchema),
   });
@@ -41,6 +42,7 @@ export const TaskForm: FC = () => {
 
     dispatch(addTask({ id, description, completed }));
     reset();
+    setLabelPosition(false);
   };
 
   return (
@@ -51,15 +53,20 @@ export const TaskForm: FC = () => {
           error={!!formState?.errors?.description}
           variant="outlined"
         >
-          <StyledInputLabel htmlFor="outlined-adornment-task">
+          <StyledInputLabel
+            shrink={labelPosition || !!watch('description')}
+            htmlFor="outlined-adornment-task"
+          >
             Your task
           </StyledInputLabel>
           <OutlinedInput
             id="outlined-adornment-task"
             {...register('description')}
             label="Your task"
+            onFocus={() => setLabelPosition(!watch('description'))}
+            onBlur={() => setLabelPosition(!!watch('description'))}
           />
-          {!!formState?.errors?.description && (
+          {!!description?.message && (
             <StyledHelperText>
               {description?.message as string}
             </StyledHelperText>
