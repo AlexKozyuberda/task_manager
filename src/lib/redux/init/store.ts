@@ -4,6 +4,10 @@ import { configureStore } from '@reduxjs/toolkit';
 // Instruments
 import { rootReducer } from './rootReducer';
 
-export default configureStore({
+const store =  configureStore({
     reducer: rootReducer,
 });
+
+export default store;
+
+export type RootState = ReturnType<typeof store.getState>;
