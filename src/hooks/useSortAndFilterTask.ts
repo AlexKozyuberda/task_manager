@@ -1,4 +1,7 @@
+// Core
 import { useSelector } from 'react-redux';
+
+// Store
 import { RootState } from '../lib/redux/init/store';
 
 export const useSortAndFilterTasks = (

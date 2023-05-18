@@ -1,11 +1,14 @@
 // Core
 import { ChangeEvent, FC, useState } from 'react';
+import { FormControl, Radio } from '@mui/material';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 // Components
 import { TaskForm } from '../form/TaskForm';
+import { TaskItem } from './TaskItem';
 
 // Hooks
-import { useSortAndFilterTasks } from '../../hooks/useSortAndFilterTask.ts';
+import { useSortAndFilterTasks } from '../../hooks/useSortAndFilterTask';
 
 // Styles
 import {
@@ -16,10 +19,6 @@ import {
   StyledTaskList,
   StyledTextField,
 } from '../../styles';
-import { TaskItem } from './TaskItem.tsx';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-
-import { FormControl, Radio } from '@mui/material';
 
 export const TaskList: FC = () => {
   const [taskOption, setTaskOption] = useState('all');
@@ -39,7 +38,7 @@ export const TaskList: FC = () => {
     <StyledTask>
       <StyledTaskFilter>
         <StyledTextField
-          label="Search"
+          placeholder="Search by text..."
           variant="outlined"
           onChange={handleSearch}
           value={searchTask}

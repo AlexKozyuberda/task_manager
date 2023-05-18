@@ -1,11 +1,18 @@
-import { StyledCheckbox, StyledIconButton, StyledTaskItem } from '../../styles';
+// Core
+import { FC } from 'react';
 import { Typography } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useDispatch } from 'react-redux';
+
+// Store
 import { completedTask } from '../../lib/redux/task/taskSlice';
 import { openDialog } from '../../lib/redux/dialog/dialogSlice';
-import { FC } from 'react';
+
+// Types
 import { ITask } from '../../types';
+
+// Styles
+import { StyledCheckbox, StyledIconButton, StyledTaskItem } from '../../styles';
 
 export const TaskItem: FC<ITask> = ({ description, id, completed }) => {
   const dispatch = useDispatch();

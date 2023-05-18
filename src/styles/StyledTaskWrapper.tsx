@@ -1,5 +1,7 @@
+// Core
 import styled from 'styled-components';
-export const TaskListWrapper = styled.div`
+
+export const StyledTaskWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

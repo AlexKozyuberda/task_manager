@@ -1,6 +1,8 @@
+// Core
 import styled from 'styled-components';
-import { Button, FormControl, FormHelperText } from '@mui/material';
-export const FieldGroup = styled.div`
+import { Button, FormControl, FormHelperText, InputLabel } from '@mui/material';
+
+export const StyledFieldGroup = styled.div`
   display: flex;
   gap: 0 10px;
 `;
@@ -8,21 +10,24 @@ export const FieldGroup = styled.div`
 export const StyledFormControl = styled(FormControl)`
   flex: 1;
 
-  & label {
-    font-size: 14px;
-  }
-
-  & label.Mui-focused {
-    font-size: 10px;
-    text-transform: uppercase;
-    color: #5dcb42;
-  }
-
   & input.MuiInputBase-input {
     &:-webkit-autofill,
     &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
       -webkit-box-shadow: 0 0 0px 40rem #fff inset;
+    }
+  }
+
+  & input.MuiInputBase-input {
+    height: 43px;
+    padding: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+
+  fieldset {
+    span {
+      display: none;
     }
   }
 
@@ -33,10 +38,6 @@ export const StyledFormControl = styled(FormControl)`
         border-width: 1px;
       }
     }
-  }
-
-  & label.Mui-error {
-    color: #f33a3d;
   }
 
   & div.Mui-error {
@@ -50,6 +51,28 @@ export const StyledFormControl = styled(FormControl)`
   & p.Mui-error {
     font-size: 11px;
     color: #f33a3d;
+  }
+`;
+
+export const StyledInputLabel = styled(InputLabel)`
+  &.MuiInputLabel-root {
+    top: 2px;
+    left: -7px;
+    font-size: 14px;
+    color: #c4c4c4;
+    text-align: center;
+    background-color: #fff;
+
+    &.Mui-focused {
+      top: 4px;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #5dcb42;
+    }
+
+    &.Mui-error {
+      color: #f33a3d;
+    }
   }
 `;
 

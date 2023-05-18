@@ -1,4 +1,7 @@
+// Core
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+
+// Types
 import { ITask, ITasks } from '../../../types';
 
 const taskSlice = createSlice({

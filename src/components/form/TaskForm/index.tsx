@@ -1,20 +1,25 @@
 // Core
+import { FC } from 'react';
+import { useDispatch } from 'react-redux';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { InputLabel, OutlinedInput } from '@mui/material';
+import { OutlinedInput } from '@mui/material';
 
-// Configs
+// Configs & Helpers
 import { taskSchema } from './config';
+import { generateID } from '../../../helpers';
+
+// Store
+import { addTask } from '../../../lib/redux/task/taskSlice';
+
+// Styles
 import {
-  FieldGroup,
   StyledButton,
+  StyledFieldGroup,
   StyledFormControl,
   StyledHelperText,
+  StyledInputLabel,
 } from '../../../styles';
-import { generateID } from '../../../helpers';
-import { useDispatch } from 'react-redux';
-import { addTask } from '../../../lib/redux/task/taskSlice.ts';
-import { FC } from 'react';
 
 export const TaskForm: FC = () => {
   const dispatch = useDispatch();
@@ -40,13 +45,15 @@ export const TaskForm: FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <FieldGroup>
+      <StyledFieldGroup>
         <StyledFormControl
           size="small"
           error={!!formState?.errors?.description}
           variant="outlined"
         >
-          <InputLabel htmlFor="outlined-adornment-task">Your task</InputLabel>
+          <StyledInputLabel htmlFor="outlined-adornment-task">
+            Your task
+          </StyledInputLabel>
           <OutlinedInput
             id="outlined-adornment-task"
             {...register('description')}
@@ -61,7 +68,7 @@ export const TaskForm: FC = () => {
         <StyledButton type="submit" variant="outlined">
           Add
         </StyledButton>
-      </FieldGroup>
+      </StyledFieldGroup>
     </form>
   );
 };

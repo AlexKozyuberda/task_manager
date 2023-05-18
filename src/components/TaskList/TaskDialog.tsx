@@ -1,8 +1,14 @@
+// Core
+import { FC } from 'react';
 import { Dialog, DialogContent } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
+
+// Store
 import { closeDialog } from '../../lib/redux/dialog/dialogSlice';
 import { deleteTask } from '../../lib/redux/task/taskSlice';
 import { RootState } from '../../lib/redux/init/store';
+
+// Styles
 import {
   StyledButtons,
   StyledCloseButton,
@@ -10,7 +16,7 @@ import {
   StyledTypography,
 } from '../../styles';
 
-export const TaskDialog = () => {
+export const TaskDialog: FC = () => {
   const dispatch = useDispatch();
   const { show, id } = useSelector((state: RootState) => state.dialog);
 

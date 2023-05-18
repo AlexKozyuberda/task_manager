@@ -1,6 +1,7 @@
-import {createGlobalStyle} from "styled-components";
+// Core
+import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
+export const StyledGlobal = createGlobalStyle`
   *,
   ::after,
   ::before {
@@ -21,4 +22,4 @@ export const GlobalStyles = createGlobalStyle`
   #root {
     height: 100%;
   }
-`
+`;
