@@ -2,9 +2,10 @@ import { StyledCheckbox, StyledIconButton, StyledTaskItem } from '../../styles';
 import { Typography } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useDispatch } from 'react-redux';
-import { ITask, completedTask } from '../../lib/redux/task/taskSlice';
+import { completedTask } from '../../lib/redux/task/taskSlice';
 import { openDialog } from '../../lib/redux/dialog/dialogSlice';
 import { FC } from 'react';
+import { ITask } from '../../types';
 
 export const TaskItem: FC<ITask> = ({ description, id, completed }) => {
   const dispatch = useDispatch();

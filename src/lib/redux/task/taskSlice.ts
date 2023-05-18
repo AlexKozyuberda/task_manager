@@ -1,20 +1,11 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-
-export interface ITask {
-  id: string;
-  description: string;
-  completed: boolean;
-}
-
-interface ITaskState {
-  data: ITask[];
-}
+import { ITask, ITasks } from '../../../types';
 
 const taskSlice = createSlice({
   name: 'tasks',
   initialState: {
     data: [],
-  } as ITaskState,
+  } as ITasks,
   reducers: {
     addTask(state, action: PayloadAction<ITask>) {
       const { description, ...data } = action.payload;
@@ -26,7 +17,6 @@ const taskSlice = createSlice({
       const newTask = {
         ...data,
         description: firstLetterToUpperCase,
-        completed: false,
       };
 
       state.data.push(newTask);

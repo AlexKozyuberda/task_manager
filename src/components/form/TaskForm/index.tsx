@@ -1,5 +1,5 @@
 // Core
-import { useForm } from 'react-hook-form';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { InputLabel, OutlinedInput } from '@mui/material';
 
@@ -16,11 +16,6 @@ import { useDispatch } from 'react-redux';
 import { addTask } from '../../../lib/redux/task/taskSlice.ts';
 import { FC } from 'react';
 
-interface ITask {
-  description: string;
-  id: string;
-}
-
 export const TaskForm: FC = () => {
   const dispatch = useDispatch();
 
@@ -33,10 +28,13 @@ export const TaskForm: FC = () => {
     errors: { description },
   } = formState;
 
-  const onSubmit = (data: ITask) => {
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
     const id = generateID();
 
-    dispatch(addTask({ ...data, id }));
+    const description = data.description || '';
+    const completed = false;
+
+    dispatch(addTask({ id, description, completed }));
     reset();
   };
 
@@ -55,7 +53,9 @@ export const TaskForm: FC = () => {
             label="Your task"
           />
           {!!formState?.errors?.description && (
-            <StyledHelperText>{description?.message}</StyledHelperText>
+            <StyledHelperText>
+              {description?.message as string}
+            </StyledHelperText>
           )}
         </StyledFormControl>
         <StyledButton type="submit" variant="outlined">

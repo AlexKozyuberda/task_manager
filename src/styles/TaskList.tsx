@@ -1,4 +1,4 @@
-import { Box, Checkbox, IconButton } from '@mui/material';
+import { Box, Button, Checkbox, IconButton, Typography } from '@mui/material';
 import { DetailedHTMLProps, LiHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
@@ -70,6 +70,45 @@ export const StyledIconButton = styled(IconButton)`
 
     &:hover {
       color: #f33a3d;
+    }
+  }
+`;
+
+export const StyledTypography = styled(Typography)`
+  &.MuiTypography-root {
+    font-size: 14px;
+    text-align: center;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+`;
+
+export const StyledButtons = styled.div`
+  display: flex;
+  gap: 0 15px;
+  justify-content: space-around;
+`;
+
+export const StyledCloseButton = styled(Button)`
+  &.MuiButton-root {
+    text-transform: none;
+    color: #6e82ab;
+
+    &:hover {
+      background-color: rgba(110, 130, 171, 0.03);
+    }
+  }
+`;
+
+export const StyledDeleteButton = styled(Button)`
+  &.MuiButton-root {
+    text-transform: none;
+    color: #f33a3d;
+
+    &:hover {
+      background-color: rgba(243, 58, 61, 0.03);
     }
   }
 `;

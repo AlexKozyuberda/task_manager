@@ -1,8 +1,14 @@
-import { Button, Dialog, DialogContent, Typography } from '@mui/material';
+import { Dialog, DialogContent } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeDialog } from '../../lib/redux/dialog/dialogSlice';
 import { deleteTask } from '../../lib/redux/task/taskSlice';
 import { RootState } from '../../lib/redux/init/store';
+import {
+  StyledButtons,
+  StyledCloseButton,
+  StyledDeleteButton,
+  StyledTypography,
+} from '../../styles';
 
 export const TaskDialog = () => {
   const dispatch = useDispatch();
@@ -21,13 +27,18 @@ export const TaskDialog = () => {
       aria-describedby="dialog-description"
     >
       <DialogContent>
-        <Typography>Are you sure you want to delete it?</Typography>
-        <Button color="primary" onClick={() => dispatch(closeDialog())}>
-          Close
-        </Button>
-        <Button variant="contained" color="error" onClick={handleDeleteTask}>
-          Delete
-        </Button>
+        <StyledTypography>Are you sure you want to delete it?</StyledTypography>
+        <StyledButtons>
+          <StyledCloseButton
+            size="small"
+            onClick={() => dispatch(closeDialog())}
+          >
+            Close
+          </StyledCloseButton>
+          <StyledDeleteButton size="small" onClick={handleDeleteTask}>
+            Delete
+          </StyledDeleteButton>
+        </StyledButtons>
       </DialogContent>
     </Dialog>
   );
